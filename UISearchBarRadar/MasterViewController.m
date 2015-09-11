@@ -28,6 +28,14 @@
 
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
+ 
+    NSString *errorMessage = [NSString stringWithFormat:@"AutocapitalizationType not expected value. Expecting %d got %d",
+                              (int)UITextAutocapitalizationTypeNone, (int)self.searchBar.autocapitalizationType];
+    if(self.searchBar.autocapitalizationType != UITextAutocapitalizationTypeNone)
+    {
+        [self showAlertViewWithMessage:errorMessage];
+    }
+
 }
 
 - (void)didReceiveMemoryWarning {
